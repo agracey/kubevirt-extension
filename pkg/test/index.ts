@@ -32,16 +32,19 @@ const openVNC = (_: ActionOpts, values: any[])=>{
   })
 }
 
+export const EXPLORER = 'explorer'
+
 // Init the package
-export default function(plugin: IPlugin) {
+export default function(plugin: IPlugin, store: any) {
   // Auto-import model, detail, edit from the folders
   importTypes(plugin);
+
 
   // Provide plugin metadata from package.json
   plugin.metadata = require('./package.json');
 
   // Load a product
-  //plugin.addProduct(require('./product'));
+  plugin.addProduct(require('./product'));
 
 
   plugin.addAction( 
@@ -73,4 +76,5 @@ export default function(plugin: IPlugin) {
         cluster: "_"
       },
     });
+
 }
